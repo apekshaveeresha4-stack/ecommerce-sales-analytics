@@ -1,0 +1,17 @@
+SELECT
+    c.state,
+    COUNT(DISTINCT o.order_id) AS total_orders,
+    ROUND(SUM(o.sales), 2) AS total_sales,
+    ROUND(SUM(o.profit), 2) AS total_profit
+FROM orders o
+JOIN customers c
+    ON o.customer_id = c.customer_id
+GROUP BY c.state
+ORDER BY total_sales DESC
+LIMIT 10;
+
+-- KEY INSIGHTS
+-- Maharashtra is the highest-performing state by sales, orders, and profit.
+-- Gujarat is the second-highest state by sales.
+-- Karnataka and Kerala have very similar sales and profit performance.
+-- The top 10 states represent the major geographic markets in the dataset.

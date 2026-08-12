@@ -1,0 +1,8 @@
+Maharashtra was the highest-performing state by sales.
+July recorded the highest monthly sales and profit.
+November recorded the lowest monthly sales.
+Home Appliances generated the highest category sales.
+Fragrance Product 034 had a strong profit margin among high-sales products.
+Accessories Product 025 had the lowest margin among products with high sales.
+133 customers were identified as repeat customers in the SQL analysis.
+Discount-level profit margins remained relatively stable.

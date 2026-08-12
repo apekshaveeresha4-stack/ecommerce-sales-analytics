@@ -1,0 +1,22 @@
+SELECT
+    p.product_name,
+    p.category,
+    SUM(o.quantity) AS units_sold,
+    ROUND(SUM(o.sales), 2) AS total_sales,
+    ROUND(SUM(o.profit), 2) AS total_profit
+FROM orders o
+JOIN products p
+    ON o.product_id = p.product_id
+GROUP BY p.product_id, p.product_name, p.category
+ORDER BY total_sales DESC
+LIMIT 10;
+
+-- KEY INSIGHTS
+-- Lighting Product 067 has the highest sales.
+-- Fragrance Product 034 generates the highest profit among the top 10 products by sales.
+-- High sales volume does not necessarily correspond to the highest profit.
+-- KEY INSIGHTS
+-- Fragrance Product 034 generates the highest profit among all products.
+-- Lighting Product 067 has the highest sales but does not have the highest profit.
+-- High sales volume does not necessarily mean highest profitability.
+-- Beauty & Personal Care shows strong profitability.

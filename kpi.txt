@@ -1,0 +1,14 @@
+SELECT
+    COUNT(DISTINCT order_id) AS total_orders,
+    SUM(quantity) AS total_units_sold,
+    ROUND(SUM(sales), 2) AS total_sales,
+    ROUND(SUM(profit), 2) AS total_profit,
+    ROUND(SUM(profit) / SUM(sales) * 100, 2) AS profit_margin
+FROM orders;
+
+-- RESULTS
+-- Total Orders: 678
+-- Total Units Sold: 1336
+-- Total Sales: ₹26,873,797.50
+-- Total Profit: ₹5,681,050.33
+-- Profit Margin: 21.14%

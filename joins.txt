@@ -1,0 +1,16 @@
+SELECT
+    p.category,
+    SUM(o.quantity) AS units_sold,
+    ROUND(SUM(o.sales), 2) AS total_sales,
+    ROUND(SUM(o.profit), 2) AS total_profit,
+    ROUND(SUM(o.profit) / SUM(o.sales) * 100, 2) AS profit_margin
+FROM orders o
+JOIN products p
+    ON o.product_id = p.product_id
+GROUP BY p.category
+ORDER BY total_sales DESC;
+-- KEY INSIGHTS
+-- Home Appliances has the highest sales.
+-- Beauty & Personal Care has the highest profit margin.
+-- Technology has the lowest profit margin.
+-- Office Supplies has a strong profit margin despite lower sales.

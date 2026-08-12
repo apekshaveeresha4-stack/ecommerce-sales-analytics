@@ -1,0 +1,33 @@
+SELECT
+    c.customer_segment,
+    COUNT(DISTINCT c.customer_id) AS total_customers,
+    COUNT(DISTINCT o.order_id) AS total_orders,
+    SUM(o.quantity) AS units_sold,
+    ROUND(SUM(o.sales), 2) AS total_sales,
+    ROUND(SUM(o.profit), 2) AS total_profit
+FROM orders o
+JOIN customers c
+    ON o.customer_id = c.customer_id
+GROUP BY c.customer_segment
+ORDER BY total_sales DESC;
+
+
+
+SELECT
+    c.customer_segment,
+    COUNT(DISTINCT c.customer_id) AS total_customers,
+    ROUND(SUM(o.sales), 2) AS total_sales,
+    ROUND(SUM(o.profit), 2) AS total_profit,
+    ROUND(SUM(o.profit) / SUM(o.sales) * 100, 2) AS profit_margin,
+    ROUND(SUM(o.sales) / COUNT(DISTINCT c.customer_id), 2) AS sales_per_customer
+FROM orders o
+JOIN customers c
+    ON o.customer_id = c.customer_id
+GROUP BY c.customer_segment
+ORDER BY total_profit DESC;
+
+-- KEY INSIGHTS
+-- Consumer is the largest customer segment by total sales and profit.
+-- Small Business has the highest sales per customer.
+-- Small Business also has the highest profit margin.
+-- Corporate has the lowest profit margin and sales per customer among the three segments.
